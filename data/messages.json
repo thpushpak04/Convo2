@@ -1,0 +1,34 @@
+[
+  {
+    "from": "thpush",
+    "to": "kk",
+    "message": "hey buddy how are you",
+    "attachment": null,
+    "timestamp": "2026-04-01T08:59:32.217Z"
+  },
+  {
+    "from": "thpush",
+    "to": "kk",
+    "message": "hey buddy how are you",
+    "attachment": null,
+    "timestamp": "2026-04-01T08:59:46.022Z"
+  },
+  {
+    "from": "kk",
+    "to": "thpush",
+    "message": "its great buddy",
+    "attachment": null,
+    "timestamp": "2026-04-01T09:00:04.987Z"
+  },
+  {
+    "from": "thpush",
+    "to": "kk",
+    "message": "",
+    "attachment": {
+      "url": "/uploads/1775034240813-auth.js",
+      "type": "file",
+      "name": "auth.js"
+    },
+    "timestamp": "2026-04-01T09:04:00.820Z"
+  }
+]

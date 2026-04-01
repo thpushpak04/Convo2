@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     SIDEBAR LEFT — People / Friends
+══════════════════════════════════════════ -->
+<aside class="sidebar sidebar-left" id="sidebarLeft">
+  <div class="sidebar-header">
+    <div class="logo">Convo</div>
+    <div class="current-user-pill">
+      <span class="online-dot"></span>
+      <span id="currentUserName">—</span>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="section-label">
+      <span>People</span>
+      <span id="onlineCount" class="badge">0</span>
+    </div>
+    <div class="search-wrap">
+      <i class="fas fa-search"></i>
+      <input type="text" id="userSearch" placeholder="Search users…">
+    </div>
+    <ul id="userList" class="user-list"></ul>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="section-label">
+      <span>Friend Requests</span>
+      <span id="requestBadge" class="badge badge-red" style="display:none">0</span>
+    </div>
+    <ul id="requestList" class="user-list"></ul>
+  </div>
+
+  <div class="sidebar-bottom">
+    <button id="logoutBtn" class="btn-ghost"><i class="fas fa-sign-out-alt"></i> Logout</button>
+  </div>
+</aside>
+
+<!-- ══════════════════════════════════════════
+     MAIN — Feed + Chat
+══════════════════════════════════════════ -->
+<main class="main-panel">
+
+  <!-- Tabs -->
+  <div class="tab-bar">
+    <button class="tab active" data-tab="feed"><i class="fas fa-layer-group"></i> Feed</button>
+    <button class="tab" data-tab="chat"><i class="fas fa-comment-dots"></i> Chat <span id="chatTabLabel"></span></button>
+  </div>
+
+  <!-- ── FEED TAB ── -->
+  <div class="tab-content active" id="tab-feed">
+    <div class="feed-compose card">
+      <textarea id="postContent" placeholder="What's on your mind?" rows="2"></textarea>
+      <div class="compose-actions">
+        <div class="attach-group">
+          <label class="attach-btn" title="Photo/Video">
+            <i class="fas fa-image"></i>
+            <input type="file" id="postFile" accept="image/*,video/*" style="display:none">
+          </label>
+          <label class="attach-btn" title="File">
+            <i class="fas fa-paperclip"></i>
+            <input type="file" id="postFileAny" style="display:none">
+          </label>
+        </div>
+        <div id="postAttachPreview" class="attach-preview"></div>
+        <button id="postBtn" class="btn-primary"><i class="fas fa-paper-plane"></i> Post</button>
+      </div>
+    </div>
+
+    <div id="postFeed" class="post-feed">
+      <div class="empty-state"><i class="fas fa-layer-group"></i><p>Add friends to see their posts here.</p></div>
+    </div>
+  </div>
+
+  <!-- ── CHAT TAB ── -->
+  <div class="tab-content" id="tab-chat">
+    <div id="noChatSelected" class="empty-state">
+      <i class="fas fa-comment-dots"></i>
+      <p>Select a friend to start chatting.</p>
+    </div>
+    <div id="chatView" style="display:none; height:100%; display:none; flex-direction:column;">
+      <div class="chat-header">
+        <div class="chat-with-avatar" id="chatAvatar">A</div>
+        <div>
+          <div class="chat-with-name" id="chatWithName">—</div>
+          <div id="typingIndicator" class="typing-hint" style="display:none">typing…</div>
+        </div>
+      </div>
+      <div id="chatMessages" class="chat-messages"></div>
+      <div class="chat-input-area">
+        <div id="chatAttachPreview" class="attach-preview small"></div>
+        <div class="chat-input-row">
+          <label class="attach-btn" title="Image/Video">
+            <i class="fas fa-image"></i>
+            <input type="file" id="chatFile" accept="image/*,video/*" style="display:none">
+          </label>
+          <label class="attach-btn" title="Any file">
+            <i class="fas fa-paperclip"></i>
+            <input type="file" id="chatFileAny" style="display:none">
+          </label>
+          <input type="text" id="messageInput" placeholder="Message…" autocomplete="off">
+          <button id="sendBtn" class="btn-primary icon-only"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ══════════════════════════════════════════
+     SIDEBAR RIGHT — Profile / Friends list
+══════════════════════════════════════════ -->
+<aside class="sidebar sidebar-right" id="sidebarRight">
+  <div class="sidebar-header">
+    <div class="section-label">My Friends</div>
+  </div>
+  <ul id="friendsList" class="user-list"></ul>
+  <div class="sidebar-section" style="margin-top:auto; padding-top: 16px;">
+    <div class="section-label">Online Now</div>
+    <ul id="onlineList" class="user-list small-list"></ul>
+  </div>
+</aside>
+
+<!-- Notification toast -->
+<div id="toast" class="toast"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

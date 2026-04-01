@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convo — Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <div class="auth-bg"></div>
+  <div class="auth-card">
+    <div class="auth-logo">Convo</div>
+    <p class="auth-sub">Join your circle.</p>
+    <form id="registrationForm">
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="regUsername" placeholder="Pick a username" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="regPassword" placeholder="••••••••" required autocomplete="new-password">
+      </div>
+      <div id="regMsg" class="msg"></div>
+      <button type="submit" class="btn-auth">Create Account</button>
+    </form>
+    <p class="auth-link">Already a member? <a href="/login.html">Sign in</a></p>
+  </div>
+  <script src="auth.js"></script>
+</body>
+</html>
