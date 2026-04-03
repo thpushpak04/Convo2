@@ -1,30 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convo — Register</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <title>Convo - Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="auth.css">
+  <script>
+    if (localStorage.getItem('convo-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
 </head>
 <body>
-  <div class="auth-bg"></div>
-  <div class="auth-card">
-    <div class="auth-logo">Convo</div>
-    <p class="auth-sub">Join your circle.</p>
-    <form id="registrationForm">
-      <div class="field">
-        <label>Username</label>
-        <input type="text" id="regUsername" placeholder="Pick a username" required autocomplete="username">
+  <div class="auth-shell">
+    <div class="auth-panel">
+      <div class="auth-topbar">
+        <div>
+          <p class="auth-eyebrow">Private Social Space</p>
+          <div class="auth-logo">Convo</div>
+        </div>
+        <button id="themeToggle" class="theme-btn" type="button" aria-label="Toggle theme">◐</button>
       </div>
-      <div class="field">
-        <label>Password</label>
-        <input type="password" id="regPassword" placeholder="••••••••" required autocomplete="new-password">
+
+      <div class="auth-copy">
+        <h1>Create your account</h1>
+        <p>Join the same refreshed interface before entering the main app.</p>
       </div>
-      <div id="regMsg" class="msg"></div>
-      <button type="submit" class="btn-auth">Create Account</button>
-    </form>
-    <p class="auth-link">Already a member? <a href="/login.html">Sign in</a></p>
+
+      <form id="registrationForm">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" id="regUsername" placeholder="Pick a username" required autocomplete="username">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="regPassword" placeholder="Create a password" required autocomplete="new-password">
+        </div>
+        <div id="regMsg" class="msg"></div>
+        <button type="submit" class="btn-auth">Create Account</button>
+      </form>
+
+      <p class="auth-link">Already a member? <a href="/login.html">Sign in</a></p>
+    </div>
   </div>
   <script src="auth.js"></script>
 </body>

@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('themeToggle');
+
+  function applySavedTheme() {
+    const theme = localStorage.getItem('convo-theme') === 'dark' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    if (themeToggle) {
+      themeToggle.textContent = theme === 'dark' ? '☀' : '◐';
+    }
+  }
+
+  applySavedTheme();
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('convo-theme', nextTheme);
+      applySavedTheme();
+    });
+  }
+
   const loginForm = document.getElementById('loginForm');
   const regForm = document.getElementById('registrationForm');
 
